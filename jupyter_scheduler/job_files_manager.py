@@ -20,6 +20,7 @@ class JobFilesManager:
     async def copy_from_staging(self, job_id: str, redownload: Optional[bool] = False):
         job = await ensure_async(self.scheduler.get_job(job_id, False))
         staging_paths = await ensure_async(self.scheduler.get_staging_paths(job))
+        print("XXX: ", staging_paths)
         output_filenames = self.scheduler.get_job_filenames(job)
         output_dir = self.scheduler.get_local_output_path(job)
 
